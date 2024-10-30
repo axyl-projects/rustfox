@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Translations Test</title>
+  <style>
+    div {
+      margin: 10px auto;
+      width: 300px
+    }
+    p {
+      margin: 47px 0;
+      font-size: 21px;
+      line-height: 2;
+    }
+  </style>
+</head>
+<body>
+  <h1>Normal DOM content</h1>
+  <div id="host"></div>
+  <div><div><div id="host2"></div></div></div>
+  <script>
+    const host = document.getElementById("host");
+    const root = host.attachShadow({mode: "open"});
+    root.innerHTML = "<p>This is Shadow DOM content</p><div id='innerHost'></div>";
+
+    // Nested shadow tree
+    const innerHost = root.querySelector("div");
+    const innerRoot = innerHost.attachShadow({mode: "open"});
+    innerRoot.innerHTML = "<p>This is content in a nested Shadow DOM</p>";
+
+    // Host within an empty textContent element
+    const host2 = document.getElementById("host2");
+    const root2 = host2.attachShadow({mode: "open"});
+    root2.innerHTML = "<p>This is a second shadow DOM element</p>";
+  </script>
+</body>
+</html>

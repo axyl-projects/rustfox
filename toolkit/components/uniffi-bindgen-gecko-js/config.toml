@@ -1,0 +1,73 @@
+# Configure UniFFI sources
+#
+# Each key is the UDL namespace of the component.
+#
+#
+# IMPORTANT: Please Request review from a DOM peer before
+# committing to using UniFFI. There are other ways to consume Rust from
+# JavaScript that might fit your use case better.
+
+# TODO: Upgrade the TOML crate and switch to array of tables syntax.
+
+
+[suggest.async_wrappers]
+enable = true
+main_thread = [
+  "raw_suggestion_url_matches",
+  "SuggestStore",
+  "SuggestStore.interrupt",
+  "SuggestStoreBuilder",
+  "SuggestStoreBuilder.data_path",
+  "SuggestStoreBuilder.load_extension",
+  "SuggestStoreBuilder.remote_settings_bucket_name",
+  "SuggestStoreBuilder.remote_settings_server",
+  "SuggestStoreBuilder.build",
+]
+
+[relevancy.async_wrappers]
+enable = true
+main_thread = [
+  "RelevancyStore",
+  "RelevancyStore.close",
+  "RelevancyStore.interrupt",
+  "score",
+]
+
+[remote_settings.async_wrappers]
+enable = true
+main_thread = [
+  "RemoteSettings",
+]
+
+[uniffi_fixture_callbacks.async_wrappers]
+enable = true
+main_thread = [
+  "log_even_numbers_main_thread",
+]
+
+[error_support.async_wrappers]
+enable = true
+
+[tabs.async_wrappers]
+enable = true
+
+[arithmetical.async_wrappers]
+enable = true
+
+[uniffi_custom_types.async_wrappers]
+enable = true
+
+[uniffi_fixture_external_types.async_wrappers]
+enable = true
+
+[uniffi_geometry.async_wrappers]
+enable = true
+
+[uniffi_rondpoint.async_wrappers]
+enable = true
+
+[uniffi_sprites.async_wrappers]
+enable = true
+
+[uniffi_todolist.async_wrappers]
+enable = true
